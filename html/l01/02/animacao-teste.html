@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>animacao teste</title>
+  <script src="animacao.js"></script>
+  <script src="bola.js"></script>
+</head>
+<body>
+  <canvas id="canvas_animacao" width="500" height="500"></canvas>  
+  <script>
+    // referencias para o canvas
+    var canvas = document.getElementById('canvas_animacao');
+    var context = canvas.getContext('2d');
+
+    // criando alguns sprites
+    var b1 = new Bola(context);
+    b1.x = 100;
+    b1.y = 200;
+    b1.velocidadeX = 20;
+    b1.velocidadeY = -10;
+    b1.cor = 'red';
+    b1.raio = 20;
+
+    var b2 = new Bola(context);
+    b1.x = 200;
+    b1.y = 100;
+    b1.velocidadeX = -10;
+    b1.velocidadeY = 20;
+    b1.cor = 'blue';
+    b1.raio = 30;
+
+    // criando o loop de animacao
+    var animacao = new Animacao();
+    animacao.novoSprite(b1);
+    animacao.novoSprite(b2);
+
+    // ligar a animacao
+    animacao.ligar();
+
+  </script>
+</body>
+</html>

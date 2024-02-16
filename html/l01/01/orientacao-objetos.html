@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>orientacao a objetos</title>
+</head>
+<body>
+  <script>
+    function Carro(cor, velocMaxima){
+      // criando os atributos
+      this.cor = cor;
+      this.velocMaxima = velocMaxima;
+      this.velocAtual = 1;
+
+      // criando um metodo
+      this.acelerar = function() {
+        this.velocAtual += 10;
+      }
+    }
+
+    // instanciando objetos da classe carro
+    var meuCarro = new Carro('vermelho',250);
+    var oponente = new Carro('azul',300);
+
+    // chamando um metodo somente em um objeto
+    meuCarro.acelerar();
+
+    // verificando as velocidades
+    document.write(meuCarro.cor + ': ' + meuCarro.velocAtual);
+    document.write('<br>');
+    document.write(oponente.cor + ': ' + oponente.velocAtual);
+  </script>
+</body>
+</html>

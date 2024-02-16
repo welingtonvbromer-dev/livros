@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>request animation frame</title>
+</head>
+<body>
+  <!-- arquivo: request-animation-frame.html -->
+  <canvas id="meu_canvas" width="300" height="300"></canvas>
+  <script>
+    // canvas e contexto
+    canvas = document.getElementById('meu_canvas');
+    context = canvas.getContext('2d');
+
+    // dados da bola
+    var x = 20;
+    var y = 100;
+    var raio = 5;
+
+    // momento inicial
+    var anterior = new Date().getTime();
+
+    // iniciar a animacao
+    requestAnimationFrame(mexerBola);
+
+    // funcao de animacao
+    function mexerBola() {
+      // momento atual
+      var agora = new Date().getTime();
+
+      // diferenca
+      var decorrido = agora - anterior;
+
+      // limpar o canvas
+      context.clearRect(0,0, canvas.width, canvas.height);
+
+      // desenhar a bola
+      context.beginPath();
+      context.arc(x,y,raio,0, Math.PI*2);
+      context.fill();
+
+      // deslocar 20 pixels para a direita
+      // x += 20;
+
+      // deslocar 20 pixels por segundo
+      var velocidade = 20;
+      x += velocidade * decorrido / 1000;
+
+      // guardamos o instante para o proximo ciclo
+      anterior = agora;
+      
+      // chamar o proximo ciclo da animacao
+      requestAnimationFrame(mexerBola);
+    }
+  </script>
+</body>
+</html>
